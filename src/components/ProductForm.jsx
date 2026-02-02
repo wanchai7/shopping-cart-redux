@@ -1,6 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { addProduct } from "../redux/products/action";
+
+const categories = ["Clothing", "Electronics", "Furniture", "Cameras", "Accessories"];
 
 const ProductForm = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -11,11 +14,11 @@ const ProductForm = () => {
       id: Date.now(),
       name: data.name,
       category: data.category,
-      imageUrl: data.imageUrl,
-      price: parseInt(data.price),
+      imageUrl: data.imageUrl || "https://loremflickr.com/640/480/fashion",
+      price: parseFloat(data.price),
       quantity: parseInt(data.quantity),
     };
-    dispatch({ type: "ADD_PRODUCT", payload: newProduct });
+    dispatch(addProduct(newProduct));
     reset();
   };
 
@@ -36,18 +39,27 @@ const ProductForm = () => {
           <label className="label">
             <span className="label-text">Category</span>
           </label>
-          <input
+          <select
             {...register("category", { required: true })}
-            placeholder="Category"
-            className="input input-bordered w-full"
-          />
+            className="select select-bordered w-full"
+            defaultValue=""
+          >
+            <option value="" disabled>
+              Select Category
+            </option>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Image URL</span>
           </label>
           <input
-            {...register("imageUrl", { required: true })}
+            {...register("imageUrl", { required: false })}
             placeholder="Image URL"
             className="input input-bordered w-full"
           />

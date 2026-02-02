@@ -34,29 +34,18 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100 shadow-lg">
       <div className="flex-1">
-        <a className="btn btn-ghost text-2xl">Shopping Cart</a>
+        <a className="btn btn-ghost text-2xl" onClick={() => handlePageChange("Home")}>Shopping Cart</a>
       </div>
 
       <div className="flex-none">
         <button className="btn btn-ghost" onClick={() => handlePageChange("Home")}>Home</button>
+
         <div className="dropdown dropdown-end">
-          <div tabIndex={0} role="button" className="btn btn-ghost">
-            Categories
-          </div>
-          <ul tabIndex={0} className="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52">
-            {categories.map((category) => (
-              <li key={category}>
-                <a onClick={() => handleCategoryChange(category)}>{category}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="dropdown dropdown-end">
-          
+
           <ul tabIndex={0} className="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52">
             {themes.map((theme) => (
               <li key={theme}>
-                <input type="radio" name="theme-dropdown" className="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label={theme.charAt(0).toUpperCase() + theme.slice(1)} value={theme} onChange={() => handleThemeChange(theme)}/>
+                <input type="radio" name="theme-dropdown" className="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label={theme.charAt(0).toUpperCase() + theme.slice(1)} value={theme} onChange={() => handleThemeChange(theme)} />
               </li>
             ))}
           </ul>
