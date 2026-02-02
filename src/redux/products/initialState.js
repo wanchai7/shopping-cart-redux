@@ -1,0 +1,45 @@
+export const initialState = {
+  products: [
+    {
+      id: 1,
+      name: "Product 1",
+      price: 100,
+      category: "Category 1",
+      imageUrl: "https://picsum.photos/id/1/400/225",
+      quantity: 10,
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      price: 200,
+      category: "Category 2",
+      imageUrl: "https://picsum.photos/id/2/400/225",
+      quantity: 5,
+    },
+    {
+      id: 3,
+      name: "Product 3",
+      price: 300,
+      category: "Category 3",
+      imageUrl: "https://picsum.photos/id/3/400/225",
+      quantity: 3,
+    },
+    {
+      id: 4,
+      name: "Product 4",
+      price: 400,
+      category: "Category 4",
+      imageUrl: "https://picsum.photos/id/4/400/225",
+      quantity: 2,
+    },
+    {
+      id: 5,
+      name: "Product 5",
+      price: 500,
+      category: "Category 5",
+      imageUrl: "https://picsum.photos/id/5/400/225",
+      quantity: 10,
+    },
+  ],
+  selectedCategory: "All",
+};
