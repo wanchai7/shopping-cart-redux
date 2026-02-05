@@ -1,18 +1,14 @@
-import './App.css'
-import Navbar from './components/Navbar.jsx'
-import { useSelector } from 'react-redux'
-import Home from './pages/Home'
-import MyCart from './pages/MyCart'
-
+import NavBar from "./components/NavBar";
+import Page from "./pages/Page";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 function App() {
-  const { home } = useSelector((state) => state.page)
-
   return (
-    <>
-      <Navbar />
-      {home ? <Home /> : <MyCart />}
-    </>
-  )
+    <Provider store={store}>
+      <NavBar />
+      <Page />
+    </Provider>
+  );
 }
 
-export default App
+export default App;
