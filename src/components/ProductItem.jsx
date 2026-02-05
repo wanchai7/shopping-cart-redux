@@ -1,6 +1,14 @@
-import React from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/carts/actionTypes";
+import { removeQuantity } from "../redux/products/action";
 
 const ProductItem = ({ product }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+    dispatch(removeQuantity(product.id));
+  }
   return (
     <div className="flex flex-col text-gray-600 h-full bg-white">
       <div className="relative aspect-square w-full rounded-2xl overflow-hidden mb-4 bg-gray-100 border border-gray-100">
@@ -30,15 +38,22 @@ const ProductItem = ({ product }) => {
         <div className="mt-auto">
           <div className="flex items-center justify-between mb-4">
             <span className="text-gray-400 text-sm font-normal">
-              Available: {product.available}
+              Available: {product.quantity}
             </span>
             <span className="text-lg font-bold text-gray-800">
               ${product.price}
             </span>
           </div>
 
-          <button className="bg-indigo-100 hover:bg-indigo-600 hover:text-white text-indigo-700 text-sm font-semibold py-2 px-6 rounded-lg transition-all w-fit">
-            Buy Now
+          <button
+            onClick={handleAddToCart}
+            disabled={product.quantity <= 0}
+            className={`text-sm font-semibold py-2 px-6 rounded-lg transition-all w-fit ${product.quantity > 0
+                ? "bg-indigo-100 hover:bg-indigo-600 hover:text-white text-indigo-700"
+                : "bg-gray-200 text-gray-400 cursor-not-allowed"
+              }`}
+          >
+            {product.quantity > 0 ? "Buy Now" : "Out of Stock"}
           </button>
         </div>
       </div>

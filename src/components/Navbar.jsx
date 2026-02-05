@@ -2,13 +2,18 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 const NavBar = () => {
   const dispatch = useDispatch();
+  const carts = useSelector((state) => state.carts || []);
+  const totalItems = carts.reduce((total, item) => total + (item.quantity || 1), 0);
+
   const handlePageChange = (pageType) => {
     dispatch({ type: pageType });
   };
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">SE Shopping Cart</a>
+        <a
+          onClick={() => handlePageChange("HOME")}
+          className="btn btn-ghost text-xl cursor-pointer">SE Shopping Cart</a>
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end space-x-2">
@@ -33,7 +38,7 @@ const NavBar = () => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />{" "}
               </svg>
-              <span className="badge badge-sm indicator-item">8</span>
+              <span className="badge badge-sm indicator-item">{totalItems}</span>
             </div>
           </button>
         </div>
