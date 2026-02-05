@@ -1,9 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import CartItem from "../components/Cartitem";
 
 const MyCart = () => {
-  const cartItems = useSelector((state) => state.carts);
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.carts || []);
 
   // Calculate distinct items count
   const distinctItemsCount = cartItems.length;
@@ -61,7 +62,9 @@ const MyCart = () => {
                 </div>
               </div>
 
-              <button className="btn btn-primary w-full text-lg shadow-lg shadow-indigo-200">
+              <button
+                onClick={() => dispatch({ type: "CHECKOUT" })}
+                className="btn btn-primary w-full text-lg shadow-lg shadow-indigo-200">
                 Checkout
               </button>
             </div>

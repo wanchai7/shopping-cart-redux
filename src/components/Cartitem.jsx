@@ -1,10 +1,13 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart, increaseQuantity, decreaseQuantity } from "../redux/carts/actionTypes";
 import { addQuantity, removeQuantity } from "../redux/products/action";
 
 const CartItem = ({ item }) => {
     const dispatch = useDispatch();
+    const products = useSelector((state) => state.products);
+    const product = products.find((p) => p.id === item.id);
+    const isOutOfStock = product ? product.quantity <= 0 : true;
 
     const handleRemove = () => {
         // ลบสินค้าออกจากตะกร้า
@@ -72,7 +75,8 @@ const CartItem = ({ item }) => {
                         <span className="text-sm font-semibold w-6 text-center">{item.quantity}</span>
                         <button
                             onClick={handleIncrease}
-                            className="btn btn-xs btn-ghost btn-square text-gray-600 hover:bg-white hover:shadow-sm"
+                            disabled={isOutOfStock}
+                            className={`btn btn-xs btn-ghost btn-square text-gray-600 hover:bg-white hover:shadow-sm ${isOutOfStock ? "opacity-30 cursor-not-allowed" : ""}`}
                         >
                             +
                         </button>

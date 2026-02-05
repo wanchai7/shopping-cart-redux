@@ -21,7 +21,7 @@ export const initialState = [
     id: 3,
     title: "Mechanical Keyboard",
     category: "Accessories",
-    quantity: 15,
+    quantity: 5,
     price: 129,
     imageUrl:
       "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=1000&auto=format&fit=crop",
@@ -30,7 +30,7 @@ export const initialState = [
     id: 4,
     title: "Running Shoes",
     category: "Footwear",
-    quantity: 20,
+    quantity: 2,
     price: 85,
     imageUrl:
       "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop",
@@ -66,7 +66,7 @@ export const initialState = [
     id: 8,
     title: "Electric Kettle",
     category: "Appliances",
-    quantity: 25,
+    quantity: 2,
     price: 45,
     imageUrl:
       "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=1000&auto=format&fit=crop",
@@ -75,7 +75,7 @@ export const initialState = [
     id: 9,
     title: "Gaming Mouse",
     category: "Accessories",
-    quantity: 30,
+    quantity: 3,
     price: 59,
     imageUrl:
       "https://images.unsplash.com/photo-1527814732934-94a1fe71fe68?q=80&w=1000&auto=format&fit=crop",
